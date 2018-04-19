@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.DataPoints = new System.Windows.Forms.Label();
             this.Degree = new System.Windows.Forms.Label();
             this.PlotData = new System.Windows.Forms.Button();
             this.PlotLine = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.NumberPoints = new System.Windows.Forms.NumericUpDown();
+            this.NumberDegree = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumberPoints)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumberDegree)).BeginInit();
             this.SuspendLayout();
             // 
             // DataPoints
@@ -51,6 +51,7 @@
             this.DataPoints.Size = new System.Drawing.Size(85, 17);
             this.DataPoints.TabIndex = 0;
             this.DataPoints.Text = "DataPoints :";
+            this.DataPoints.Click += new System.EventHandler(this.DataPoints_Click);
             // 
             // Degree
             // 
@@ -60,6 +61,7 @@
             this.Degree.Size = new System.Drawing.Size(63, 17);
             this.Degree.TabIndex = 1;
             this.Degree.Text = "Degree :";
+            this.Degree.Click += new System.EventHandler(this.Degree_Click);
             // 
             // PlotData
             // 
@@ -79,65 +81,67 @@
             this.PlotLine.TabIndex = 3;
             this.PlotLine.Text = "Plot Line :";
             this.PlotLine.UseVisualStyleBackColor = true;
-            this.PlotLine.Click += new System.EventHandler(this.Button2_Click);
+            this.PlotLine.Click += new System.EventHandler(this.PlotLine_Click);
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(15, 110);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(495, 400);
             this.chart1.TabIndex = 4;
             this.chart1.Text = "chart1";
             // 
-            // numericUpDown1
+            // NumberPoints
             // 
-            this.numericUpDown1.Increment = new decimal(new int[] {
+            this.NumberPoints.Increment = new decimal(new int[] {
             100,
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(145, 14);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.NumberPoints.Location = new System.Drawing.Point(145, 14);
+            this.NumberPoints.Maximum = new decimal(new int[] {
             20000,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.NumberPoints.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown1.TabIndex = 5;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.NumberPoints.Name = "NumberPoints";
+            this.NumberPoints.Size = new System.Drawing.Size(120, 22);
+            this.NumberPoints.TabIndex = 5;
+            this.NumberPoints.Value = new decimal(new int[] {
             100,
             0,
             0,
             0});
+            this.NumberPoints.ValueChanged += new System.EventHandler(this.NumberPoints_ValueChanged);
             // 
-            // numericUpDown2
+            // NumberDegree
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(145, 64);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown2.TabIndex = 6;
+            this.NumberDegree.Location = new System.Drawing.Point(145, 64);
+            this.NumberDegree.Name = "NumberDegree";
+            this.NumberDegree.Size = new System.Drawing.Size(120, 22);
+            this.NumberDegree.TabIndex = 6;
+            this.NumberDegree.ValueChanged += new System.EventHandler(this.NumberDegree_ValueChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(561, 517);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.NumberDegree);
+            this.Controls.Add(this.NumberPoints);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.PlotLine);
             this.Controls.Add(this.PlotData);
@@ -146,8 +150,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumberPoints)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumberDegree)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,8 +164,8 @@
         private System.Windows.Forms.Button PlotData;
         private System.Windows.Forms.Button PlotLine;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown NumberPoints;
+        private System.Windows.Forms.NumericUpDown NumberDegree;
     }
 }
 
