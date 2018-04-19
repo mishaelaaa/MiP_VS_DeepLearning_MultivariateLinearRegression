@@ -16,5 +16,20 @@ namespace MiP_VS_DeepLearning_MultivariateLinearRegression
         {
             InitializeComponent();
         }
+
+        private void domainUpDown1_SelectedItemChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PlotData_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
