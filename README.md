@@ -7,4 +7,10 @@ In statistics, linear regression is a linear approach for modelling the relation
 The case of one explanatory variable is called simple linear regression. 
 For more than one explanatory variable, the process is called multiple linear regression.
 
+What is Multivariate Linear Regression
+--------------------------------------
+1. Model form and assumptions
+2. Parameter estimation
+3. Inference and prediction
+
 This project focuses on this part of mathematics.
