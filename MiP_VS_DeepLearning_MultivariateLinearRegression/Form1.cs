@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MathNet;
 using System.Windows.Forms;
 
 namespace MiP_VS_DeepLearning_MultivariateLinearRegression
@@ -17,9 +18,12 @@ namespace MiP_VS_DeepLearning_MultivariateLinearRegression
             InitializeComponent();
         }
 
+#pragma warning disable CS1633 // Unrecognized #pragma directive
+#pragma Random 
         Random rand = new Random();
         double[] xCoords;
         double[] yCoords;
+#pragma warning restore CS1633 // Unrecognized #pragma directive
 
         private void PlotLine_Click(object sender, EventArgs e)
         {
@@ -47,6 +51,21 @@ namespace MiP_VS_DeepLearning_MultivariateLinearRegression
 
             for (var i = Convert.ToInt32(Math.Floor(yCoords.GetLength(0) / 2.0)); i < yCoords.GetLength(0); i++)
                 yCoords[i] = rand.Next(i - (int)yCoords.GetLength(0) / 10, i);
+
+            chart1.Series.Add("Data Points");
+            chart1.Series["Data Points"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+
+            for(var i=0; i<xCoords.Length; i++)
+                chart1.Series["Data Pionts"].Points.AddXY(xCoords[i], yCoords[i]);
+
+            chart1.Series["Data Points"].Color = Color.DarkBlue;
+
+            chart1.Series.Add("QR Line");
+            chart1.Series["QR Line"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+
+            chart1.Series["Data Points"].Color = Color.DarkGreen;
+
+
         }
 
         private void NumberPoints_ValueChanged(object sender, EventArgs e)
