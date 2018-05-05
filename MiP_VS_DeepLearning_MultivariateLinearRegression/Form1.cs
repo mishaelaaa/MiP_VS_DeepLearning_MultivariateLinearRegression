@@ -63,19 +63,11 @@ namespace MiP_VS_DeepLearning_MultivariateLinearRegression
             chart1.Series["QR Line"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
 
             chart1.Series["Data Points"].Color = Color.DarkGreen;
-
-
         }
 
-        private void NewMethod(int i)
-        {
-            NewMethod1(i);
-        }
+        private void NewMethod(int i) => NewMethod1(i);
 
-        private void NewMethod1(int i)
-        {
-            chart1.Series["Data Pionts"].Points.AddXY(xCoords[i], yCoords[i]);
-        }
+        private void NewMethod1(int i) => chart1.Series["Data Pionts"].Points.AddXY(xCoords[i], yCoords[i]);
 
         private System.Windows.Forms.DataVisualization.Charting.Chart GetChart1()
         {
