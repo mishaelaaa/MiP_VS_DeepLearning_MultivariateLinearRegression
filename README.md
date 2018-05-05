@@ -6,6 +6,8 @@ In statistics, linear regression is a linear approach for modelling the relation
 The case of one explanatory variable is called simple linear regression. 
 For more than one explanatory variable, the process is called multiple linear regression.
 
+This project is focused on this part of mathematics.
+
 ## What is Multivariate Linear Regression
 
 ```
@@ -14,15 +16,12 @@ For more than one explanatory variable, the process is called multiple linear re
  Inference and prediction ; 
 ```
 
-This project is focused on this part of mathematics.
-
 ### I use : 
-
-1/ Visual Studio 2017 
-2/ .NET Framework 4.7.2 
-3/ C# Language 
-4/ Windows Forms App on Visual Studio 
-5/ Libraries : 
+1. Visual Studio 2017 
+2. .NET Framework 4.7.2 
+3. C# Language 
+4. Windows Forms App on Visual Studio 
+5. Libraries : 
 	-> **MathNet.Numerics**
 		```
 		**Install** : PM> Install-Package MathNet.Numerics -Version 4.4.0
