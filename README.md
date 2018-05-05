@@ -22,10 +22,10 @@ This project is focused on this part of mathematics.
 3. C# Language 
 4. Windows Forms App on Visual Studio 
 5. Libraries : 
-	### **MathNet.Numerics**
+	 1. MathNet.Numerics
 		```
-		**Install** : PM> Install-Package MathNet.Numerics -Version 4.4.0
+		Install : PM> Install-Package MathNet.Numerics -Version 4.4.0
 		```
-	 **System**
-	 **System.Drawing**
-	 **System.Windows.Forms**
+	 2. System
+	 3. System.Drawing
+	 4. System.Windows.Forms
