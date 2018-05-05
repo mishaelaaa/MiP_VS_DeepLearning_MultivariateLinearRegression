@@ -9,25 +9,25 @@ For more than one explanatory variable, the process is called multiple linear re
 ## What is Multivariate Linear Regression
 
 ```
-* Model form and assumptions ;
-* Parameter estimation ; 
-* Inference and prediction ; 
+ Model form and assumptions ;
+ Parameter estimation ; 
+ Inference and prediction ; 
 ```
 
 This project is focused on this part of mathematics.
 
 ## I use : 
 ```
-* Visual Studio 2017
-* .NET Framework 4.7.2
-* C# Language
-* Windows Forms App on Visual Studio
-* Libraries : 
-	* **MathNet.Numerics**
+ Visual Studio 2017
+ .NET Framework 4.7.2
+ C# Language
+ Windows Forms App on Visual Studio
+ Libraries : 
+	-> **MathNet.Numerics**
 		```
 		**Install** : PM> Install-Package MathNet.Numerics -Version 4.4.0
 		```
-	* **System**
-	* **System.Drawing**
-	* **System.Windows.Forms**
+	-> **System**
+	-> **System.Drawing**
+	-> **System.Windows.Forms**
 ```
