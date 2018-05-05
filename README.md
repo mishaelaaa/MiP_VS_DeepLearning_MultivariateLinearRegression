@@ -17,12 +17,12 @@ For more than one explanatory variable, the process is called multiple linear re
 This project is focused on this part of mathematics.
 
 ## I use : 
-```
- Visual Studio 2017
- .NET Framework 4.7.2
- C# Language
- Windows Forms App on Visual Studio
- Libraries : 
+
+1/ Visual Studio 2017
+2/ .NET Framework 4.7.2
+3/ C# Language
+4/ Windows Forms App on Visual Studio
+5/ Libraries : 
 	-> **MathNet.Numerics**
 		```
 		**Install** : PM> Install-Package MathNet.Numerics -Version 4.4.0
@@ -30,4 +30,3 @@ This project is focused on this part of mathematics.
 	-> **System**
 	-> **System.Drawing**
 	-> **System.Windows.Forms**
-```
