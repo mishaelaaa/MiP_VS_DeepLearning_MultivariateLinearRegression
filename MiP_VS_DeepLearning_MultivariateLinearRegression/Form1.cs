@@ -43,22 +43,21 @@ namespace MiP_VS_DeepLearning_MultivariateLinearRegression
             for (int i = 0; i < Math.Floor(xCoords.Length / 2.0); i++)
                 xCoords[i] = rand.Next(i - xCoords.Length / 10, i + xCoords.Length / 10);
 
-            for (var i =Convert.ToInt32(Math.Floor(xCoords.GetLength(0) / 2.0)); i < xCoords.GetLength(0); i++)
-                xCoords[i] = rand.Next(i + xCoords.Length / 5, i + (int)xCoords[i] / 2);
+            for (var i = Convert.ToInt32(Math.Floor(xCoords.GetLength(0) / 2.0)); i < xCoords.GetLength(0); i++)
+                xCoords[i] = rand.Next(i + xCoords.Length / 5, i + xCoords.Length / 2);
 
             for (var i = 0; i < Math.Floor(yCoords.Length / 2.0); i++)
                 yCoords[i] = rand.Next(i, i + yCoords.Length / 5);
 
             for (var i = Convert.ToInt32(Math.Floor(yCoords.GetLength(0) / 2.0)); i < yCoords.GetLength(0); i++)
-                yCoords[i] = rand.Next(i - (int)yCoords.GetLength(0) / 10, i);
+                yCoords[i] = rand.Next(i - yCoords.GetLength(0) / 10, i);
 
             chart1.Series.Add("Data Points");
             chart1.Series["Data Points"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
 
-            for(var i=0; i<xCoords.Length; i++)
-                chart1.Series["Data Pionts"].Points.AddXY(xCoords[i], yCoords[i]);
-
-            chart1.Series["Data Points"].Color = Color.DarkBlue;
+            for (var i = 0; i < xCoords.Length; i++)
+                NewMethod(i);
+            GetChart1().Series["Data Points"].Color = Color.DarkBlue;
 
             chart1.Series.Add("QR Line");
             chart1.Series["QR Line"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -66,6 +65,21 @@ namespace MiP_VS_DeepLearning_MultivariateLinearRegression
             chart1.Series["Data Points"].Color = Color.DarkGreen;
 
 
+        }
+
+        private void NewMethod(int i)
+        {
+            NewMethod1(i);
+        }
+
+        private void NewMethod1(int i)
+        {
+            chart1.Series["Data Pionts"].Points.AddXY(xCoords[i], yCoords[i]);
+        }
+
+        private System.Windows.Forms.DataVisualization.Charting.Chart GetChart1()
+        {
+            return chart1;
         }
 
         private void NumberPoints_ValueChanged(object sender, EventArgs e)
