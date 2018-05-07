@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using MathNet;
 using System.Windows.Forms;
+using MathNet;
+using MathNet.Numerics.LinearAlgebra.Double;
 
 namespace MiP_VS_DeepLearning_MultivariateLinearRegression
 {
@@ -24,11 +28,6 @@ namespace MiP_VS_DeepLearning_MultivariateLinearRegression
         double[] xCoords;
         double[] yCoords;
 #pragma warning restore CS1633 // Unrecognized #pragma directive
-
-        private void PlotLine_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void PlotData_Click(object sender, EventArgs e)
         {
@@ -50,28 +49,29 @@ namespace MiP_VS_DeepLearning_MultivariateLinearRegression
                 yCoords[i] = rand.Next(i, i + yCoords.Length / 5);
 
             for (var i = Convert.ToInt32(Math.Floor(yCoords.GetLength(0) / 2.0)); i < yCoords.GetLength(0); i++)
-                yCoords[i] = rand.Next(i - yCoords.GetLength(0) / 10, i);
+                yCoords[i] = rand.Next(i - yCoords.Length / 10, i);
 
             chart1.Series.Add("Data Points");
             chart1.Series["Data Points"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            chart1.Series["Data Points"].Color = Color.DarkBlue;
 
-            for (var i = 0; i < xCoords.Length; i++)
-                NewMethod(i);
-            GetChart1().Series["Data Points"].Color = Color.DarkBlue;
+            for (var i = 0; i<xCoords.Length; i++)
+                chart1.Series["Data Pionts"].Points.AddXY(xCoords[i], yCoords[i]);
 
             chart1.Series.Add("QR Line");
             chart1.Series["QR Line"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-
-            chart1.Series["Data Points"].Color = Color.DarkGreen;
+            chart1.Series["QR Line"].Color = Color.DarkGreen;
         }
 
-        private void NewMethod(int i) => NewMethod1(i);
-
-        private void NewMethod1(int i) => chart1.Series["Data Pionts"].Points.AddXY(xCoords[i], yCoords[i]);
-
-        private System.Windows.Forms.DataVisualization.Charting.Chart GetChart1()
+        private void PlotLine_Click(object sender, EventArgs e)
         {
-            return chart1;
+            chart1.Series["QR Line"].Points.Clear();
+
+            var Degree = Convert.ToInt32(NumberDegree.Value);
+            var X = new DenseMatrix(xCoords.Length, Degree + 1);
+            X.SetColumn(0, DenseVector.Create(xCoords.Length, i => 1));
+
+
         }
 
         private void NumberPoints_ValueChanged(object sender, EventArgs e)
