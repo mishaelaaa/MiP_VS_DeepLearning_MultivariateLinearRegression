@@ -24,9 +24,13 @@ namespace MiP_VS_DeepLearning_MultivariateLinearRegression
 
 #pragma warning disable CS1633 // Unrecognized #pragma directive
 #pragma Random 
+
         Random rand = new Random();
         double[] xCoords;
         double[] yCoords;
+
+        public Random Rand { get => rand; set => rand = value; }
+
 #pragma warning restore CS1633 // Unrecognized #pragma directive
 
         private void PlotData_Click(object sender, EventArgs e)
