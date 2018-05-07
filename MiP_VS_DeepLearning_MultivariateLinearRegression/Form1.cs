@@ -71,6 +71,14 @@ namespace MiP_VS_DeepLearning_MultivariateLinearRegression
             var X = new DenseMatrix(xCoords.Length, Degree + 1);
             X.SetColumn(0, DenseVector.Create(xCoords.Length, i => 1));
 
+            if (Degree != 0)
+                X.SetColumn(1, xCoords);
+
+            for (int i = 2; i < Degree; i++)
+                X.SetColumn(i, X.Column(1).PointwiseMultiply(X.Column(i - 1)));
+
+            var y = DenseMatrix.OfColumns(yCoords.Length, 1, new[] { new DenseVector(yCoords) });
+            var qrTheta = X.QR().Solve(y).ToColumnArrays();
 
         }
 
