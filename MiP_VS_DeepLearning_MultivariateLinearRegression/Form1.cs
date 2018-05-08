@@ -84,6 +84,22 @@ namespace MiP_VS_DeepLearning_MultivariateLinearRegression
             var y = DenseMatrix.OfColumns(yCoords.Length, 1, new[] { new DenseVector(yCoords) });
             var qrTheta = X.QR().Solve(y).ToColumnArrays();
 
+            for (int i = 0; i < xCoords.Length; i++)
+            {
+                chart1.Series["QR Line"].Points.AddXY(xCoords[i], yPrediction(xCoords[i], qrTheta));
+            }
+        }
+
+        private double yPrediction(double v, double[][] qrTheta) => throw new NotImplementedException();
+
+        private static double yPrediction(double xPlot, double[] theta)
+        {
+            var yPlot = 0.0;
+
+            for (var i = 0; i < theta.Length; i++)
+                yPlot += theta[i] * Math.Pow(xPlot, i);
+            
+            return yPlot;
         }
 
         private void NumberPoints_ValueChanged(object sender, EventArgs e)
