@@ -28,9 +28,6 @@ namespace MiP_VS_DeepLearning_MultivariateLinearRegression
         Random rand = new Random();
         double[] xCoords;
         double[] yCoords;
-
-        public Random Rand { get => rand; set => rand = value; }
-
 #pragma warning restore CS1633 // Unrecognized #pragma directive
 
         private void PlotData_Click(object sender, EventArgs e)
@@ -65,11 +62,16 @@ namespace MiP_VS_DeepLearning_MultivariateLinearRegression
             chart1.Series.Add("QR Line");
             chart1.Series["QR Line"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart1.Series["QR Line"].Color = Color.DarkGreen;
+
+            chart1.Series.Add("Calc Line");
+            chart1.Series["Calc Line"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["Calc Line"].Color = Color.Coral;
         }
 
         private void PlotLine_Click(object sender, EventArgs e)
         {
             chart1.Series["QR Line"].Points.Clear();
+            chart1.Series["Calc Line"].Points.Clear();
 
             var Degree = Convert.ToInt32(NumberDegree.Value);
             var X = new DenseMatrix(xCoords.Length, Degree + 1);
@@ -84,16 +86,35 @@ namespace MiP_VS_DeepLearning_MultivariateLinearRegression
             var y = DenseMatrix.OfColumns(yCoords.Length, 1, new[] { new DenseVector(yCoords) });
             var qrTheta = X.QR().Solve(y).ToColumnArrays();
 
+            //(XTX)-1 * (XTy).
+            var calcTheta = (X.Transpose().Multiply(X)).Inverse()
+                .Multiply(X.Transpose()).Multiply(y).ToColumnArrays();
+
             var xMax = xCoords.Max();
             var xMin = xCoords.Min();
-            var interval = (xMax - xMin) / Convert.ToDouble(NumberDegree.Value);
+            var interval = (xMax - xMin) / Convert.ToDouble(NumberPoints.Value);
 
-         //   for (int i = xMin; i < xMax; i += interval) 
-         //      chart1.Series["QR Line"].Points.AddXY(i, YPrediction(i, qrTheta));
-
+            for (var i = xMin; i < xMax; i += interval)
+            {
+                chart1.Series["QR Line"].Points.AddXY(i, yPrediction(i, qrTheta));
+                chart1.Series["Calc Line"].Points.AddXY(i, yPrediction(i, calcTheta));
+            }
         }
 
-        private double YPrediction(double v, double[][] qrTheta) => throw new NotImplementedException();
+        private double yPrediction(double i, double[][] qrTheta)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static double yPrediction(double xPlot, double[] theta)
+        {
+            var yPlot = 0.0;
+
+            for (var i = 0; i < theta.Length; i++)
+                yPlot += theta[i] * Math.Pow(xPlot, i);
+
+            return yPlot;
+        }
 
         private void NumberPoints_ValueChanged(object sender, EventArgs e)
         {
